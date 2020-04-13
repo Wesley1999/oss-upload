@@ -889,7 +889,9 @@ function oss_upload_options_page(){
         <th scope="row"><?php _e('Auto Rename', 'oss-upload')?></th>
         <td>
             <p><label><input name="ouop[oss_rename]" type="checkbox" value="1" checked="checked" disabled />
-            <?php _e('上传时文件自动重命名，为保持毫秒\'时间戳-36位uuid.后缀\'的命名规范 ，此项必选','oss-upload')?></label></p>
+            <?php _e('上传时文件自动重命名，为保持毫秒<code>时间戳-36位uuid.后缀</code>的命名规范 ，此项必选','oss-upload')?></label></p>
+            <p>此外，还要取消勾选<code>设置-媒体</code>中<code>以年—月目录形式组织上传内容</code>的选项，<a href="/wp-admin/options-media.php">前往</a></p>
+            <p>其他任何插件中关于文件重命名的功能都要关闭，例如<code>WPJAM</code>插件中的<code>上传图片加上时间戳</code>，<a href="/wp-admin/admin.php?page=wpjam-basic#tab_enhance">前往</a></p>
         </td></tr>
         <tr valign="top">
         <th scope="row"><?php _e('URL Fixer', 'oss-upload')?></th>
