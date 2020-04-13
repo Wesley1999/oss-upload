@@ -349,7 +349,7 @@ msgstr "自动重命名"
 
 #: oss-upload.php:876
 msgid "Auto rename uploaded file if having like Non-ASCII problem"
-msgstr "上传时文件自动重命名，如有中文乱码之类的问题请勾选"
+msgstr "上传时文件自动重命名，为保持毫秒'时间戳-36位uuid.后缀'的命名规范 ，此项必选"
 
 #: oss-upload.php:879
 msgid "URL Fixer"

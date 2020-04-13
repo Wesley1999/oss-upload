@@ -51,7 +51,23 @@ function oss_upload_rename($name){
     if(!ouops('oss_rename')) return $name;
     $filetype = wp_check_filetype($name);
     $ext = !empty($filetype['ext']) ? $filetype['ext'] : 'png';
-    return md5($name).'.'.$ext;
+    return getMillisecond().'-'.uuid36().'.'.$ext;
+}
+
+// 返回带连字符的uuid
+function uuid36($prefix = '')  {    
+    $chars = md5(uniqid(mt_rand(), true));    
+    $uuid  = substr($chars,0,8) . '-';    
+    $uuid .= substr($chars,8,4) . '-';    
+    $uuid .= substr($chars,12,4) . '-';   
+    $uuid .= substr($chars,16,4) . '-';    
+    $uuid .= substr($chars,20,12);    
+    return $prefix . $uuid;  
+}
+
+// 返回当前的毫秒时间戳
+function getMillisecond() { 
+    return intval(microtime(1) * 1000); 
 }
 
 function oss_upload_webp(){
@@ -872,8 +888,8 @@ function oss_upload_options_page(){
         <tr valign="top">
         <th scope="row"><?php _e('Auto Rename', 'oss-upload')?></th>
         <td>
-            <p><label><input name="ouop[oss_rename]" type="checkbox" value="1" <?php checked(ouops('oss_rename'),1);?> />
-            <?php _e('Auto rename uploaded file if having like Non-ASCII problem','oss-upload')?></label></p>
+            <p><label><input name="ouop[oss_rename]" type="checkbox" value="1" checked="checked" disabled />
+            <?php _e('上传时文件自动重命名，为保持毫秒\'时间戳-36位uuid.后缀\'的命名规范 ，此项必选','oss-upload')?></label></p>
         </td></tr>
         <tr valign="top">
         <th scope="row"><?php _e('URL Fixer', 'oss-upload')?></th>
