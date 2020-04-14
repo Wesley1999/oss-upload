@@ -48,7 +48,7 @@ function oss_upload_basename($file){
 }
 
 function oss_upload_rename($name){
-    if(!ouops('oss_rename')) return $name;
+    # if(!ouops('oss_rename')) return $name;
     $filetype = wp_check_filetype($name);
     $ext = !empty($filetype['ext']) ? $filetype['ext'] : 'png';
     return getMillisecond().'-'.uuid36().'.'.$ext;
